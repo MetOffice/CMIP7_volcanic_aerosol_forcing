@@ -115,15 +115,15 @@ def mid_point_interpolation(opt_prop_source, wvs_source, band_mid, verbose=False
     
     return opt_prop_interp
 
-def read_cmip7_source_data_v113(source_dir, filename_part, opt_prop_name, \
-                                expected_dimension_keys, skip_uv_wvs=1,   \
-                                first_month=0, last_month=1,              \
+def read_cmip7_source_data_v113(source_dir, data_version, filename_part,    \
+                                opt_prop_name, expected_dimension_keys,     \
+                                skip_uv_wvs=1, first_month=0, last_month=1, \
                                 verbose=False):
     
     # The first wavelength in the source data (0.1 microns) may be well outside the range 
     # of the SW spectral bands so this can be skipped if skip_uv_wvs is set to 1
     #
-    source_filepath = Path(source_dir) / "{}{}".format(opt_prop_name, filename_part)
+    source_filepath = Path(source_dir) / data_version / "{}{}".format(opt_prop_name, filename_part)
     
     # Reading the source file
     print("\n### Opening the cmip7 datafile: \n", source_filepath)
@@ -295,8 +295,8 @@ if __name__ == '__main__':
     #
     source_dir   = '/your_base_directory/v1.1.3'
 
-    # Data version. This could be used in the directory structure below source_dir 
-    # data_version = 'v20240903'
+    # Data version. This should be used in the directory structure below source_dir 
+    data_version = 'v20240903'
     
     # Filenames minus the 3-charcter string at the start corresponding to the optical property name 
     #
@@ -424,7 +424,7 @@ if __name__ == '__main__':
         
         source_dataset, opt_prop_source, wvs_source, time, time_bnds = \
                                                                             \
-                    read_cmip7_source_data_v113(source_dir, filename_part, \
+                    read_cmip7_source_data_v113(source_dir, data_version, filename_part, \
                                                 opt_prop_name, expected_dimension_keys, skip_uv_wvs=skip_uv_wvs, \
                                                 first_month=first_month, last_month=last_month, \
                                                 verbose=verbose)
