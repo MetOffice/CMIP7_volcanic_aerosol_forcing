@@ -115,9 +115,9 @@ def mid_point_interpolation(opt_prop_source, wvs_source, band_mid, verbose=False
     
     return opt_prop_interp
 
-def read_cmip7_source_data_v113(source_dir, data_version, filename_part,    \
+def read_cmip7_source_data_v130(source_dir, data_version, filename_part,    \
                                 opt_prop_name, expected_dimension_keys,     \
-                                skip_uv_wvs=1, first_month=0, last_month=1, \
+                                skip_uv_wvs=0, first_month=0, last_month=1, \
                                 verbose=False):
     
     # The first wavelength in the source data (0.1 microns) may be well outside the range 
@@ -293,14 +293,14 @@ if __name__ == '__main__':
     # data and outputs
     ###############################################################################
     #
-    source_dir   = '/your_base_directory/v1.1.3'
+    source_dir   = '/your_base_directory/v1.3.0'
 
     # Data version. This should be used in the directory structure below source_dir 
-    data_version = 'v20240903'
+    data_version = 'v20250122'
     
     # Filenames minus the 3-charcter string at the start corresponding to the optical property name 
     #
-    filename_part = '_input4MIPs_aerosolProperties_CMIP_UOEXETER-CMIP-1-1-3_gnz_175001-202312.nc'
+    filename_part = '_input4MIPs_aerosolProperties_CMIP_UOEXETER-CMIP-1-3-0_gnz_185001-202112-clim.nc'
 
     # Output file for interpolated data
     #
@@ -332,14 +332,13 @@ if __name__ == '__main__':
     # if that falls well outside the spectral range of the radiation scheme. 
     # If so set skip_uv_wvs = 1, other wise set to 0.
     #
-    skip_uv_wvs = 1
+    skip_uv_wvs = 0
 
-    
     ###############################################################################
     # 3. Specify which months of the time series do you want to read 
     ###############################################################################
     #
-    # As of version 1.1.3 there were 3288 months in the file 
+    # As of version 1.1.3 and 1.3.0 there were 3288 months in the file 
     # covering the time period 1750 - 2023 (274 years * 12 = 3288).
     #
     # Therefore users may want to use the following setting for first_month and last_month:
@@ -352,7 +351,7 @@ if __name__ == '__main__':
     Dec_2021 = 3264  # To include data through to the end of the 2021  
     Dec_2023 = 3288  # To include data through to the end of the timeseries  
                      # (or in this case could set last_month to -1) 
-#
+    #
     # Assuming we'd like data covering the period 1850 - 2021
     first_month = Jan_1850
     last_month  = Dec_2021
@@ -404,7 +403,7 @@ if __name__ == '__main__':
     # The interpolation method will not work and is set to crash if the order of dimensions 
     # does not match this:
     #
-    expected_dimension_keys = ['time', 'lat', 'height', 'wavelength', 'bnds']
+    expected_dimension_keys = ['time', 'lat', 'height', 'wavelength', 'bnds', 'nv']
 
     ###############################################################################
     # Information only for quick check plotting function below
@@ -424,10 +423,10 @@ if __name__ == '__main__':
         
         source_dataset, opt_prop_source, wvs_source, time, time_bnds = \
                                                                             \
-                    read_cmip7_source_data_v113(source_dir, data_version, filename_part, \
-                                                opt_prop_name, expected_dimension_keys, skip_uv_wvs=skip_uv_wvs, \
-                                                first_month=first_month, last_month=last_month, \
-                                                verbose=verbose)
+                    read_cmip7_source_data_v130(source_dir, data_version, filename_part, \
+                                           opt_prop_name, expected_dimension_keys, skip_uv_wvs=skip_uv_wvs, \
+                                           first_month=first_month, last_month=last_month, \
+                                           verbose=verbose)
 
         # Perform linear interpolation from the source data to the mid-point of model wavebands
         #
