@@ -1,11 +1,13 @@
 # CMIP7_volcanic_aerosol_forcing: Wavelength interpolation tools
-This repository provides tools for processing stratospheric aerosol optical property data used to prescribe volcanic forcing during CMIP7 and may be of benefit to other climate modellers participating in CMIP7. 
+This repository provides two wavelength interpolation tools for processing stratospheric aerosol optical property data used to prescribe volcanic forcing during CMIP7 and may be of benefit to other climate modellers participating in CMIP7. 
 
 CMIP7_volcanic_aerosol_wl_interpolator-midpoint.py
+
 CMIP7_volcanic_aerosol_wl_interpolator-weighted-avg.py
 
-These interpolate the CMIP7 volcanic aerosol optical properties across wavelength space and output either 
-another netcdf or numpy file with the data on the wavelengths intervals corresponding to your model's radiation scheme. 
+Both of these offer a method for interpolating the CMIP7 volcanic aerosol optical properties across wavelength space and output either 
+another netcdf or numpy file with the data on the wavelengths intervals corresponding to your model's radiation scheme. Users may wish
+to consider if these will be of assistance to them and are strongly recommeded to check the output of the interpolation before choosing which method would be most suitable for their model / application.
 
 The midpoint version is simple and fast to run. It will perform a straight-forward linear interpolation to the midpoint
 wavelengths that you specify, corresponding to your radiation schemes spectral bands. The downside is that it can lead
@@ -21,12 +23,14 @@ intervals and itegrating with appropriate weightings:
   Single-scattering albedo:   Weighted by irradiance * extincton
   Asymmetry factor:           Weighted by irradiance * extinction * single-scattering albeod
 
+Please be aware that these tools are shared on a good will basis and whilst they have been reviewed and tested we can not make any 
+guarantees of the scientific accuracy or applicability. Users should inspect and test the outcome of running it and reaching 
+their own conclusion as to whether if it is the most appropriate interpolation method for their model, 
+and has produced a scientifically correct / appropriate result. 
+
 If either of these tools seem potentially useful please take a working copy and modify the main section of the script to specify the 
 wavelengths of your model and input / output directories etc. 
 
-Please be aware that this code is shared on a good will basis and whilst is has been reviewed and tested we can not make any 
-guarantees of its scientific accuracy or applicability. Users should inspect and test the outcome of running it and reaching 
-their own conclusion as to whether if it is the most appropriate interpolation method for their model, 
-and has produced a scientifically correct / appropriate result. 
+
 
 See comments within code for further details. 
