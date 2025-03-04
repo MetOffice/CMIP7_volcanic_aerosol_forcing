@@ -1,4 +1,4 @@
-# CMIP7_volcanic_aerosol_forcing: Wavelength interpolation tool
+# CMIP7_volcanic_aerosol_forcing: Wavelength interpolation tools
 This repository provides tools for processing stratospheric aerosol optical property data used to prescribe volcanic forcing during CMIP7 and may be of benefit to other climate modellers participating in CMIP7. 
 
 CMIP7_volcanic_aerosol_wl_interpolator-midpoint.py
