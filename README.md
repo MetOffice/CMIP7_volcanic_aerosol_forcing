@@ -18,8 +18,11 @@ potentially more accurate results, particularly for wide spectral wavebands thro
 properties and solar or terrestrial radiation have strong gradients. This method calculates weighted averages
 of the optical properties across the wavelength range of a spectral band but splitting the band into sub-band 
 intervals and itegrating with appropriate weightings:
+
   Extinction:                 Weighted by irradiance
+  
   Single-scattering albedo:   Weighted by irradiance * extincton
+  
   Asymmetry factor:           Weighted by irradiance * extinction * single-scattering albeod
 
 Please be aware that these tools are shared on a good will basis and whilst they have been reviewed and tested we can not make any 
