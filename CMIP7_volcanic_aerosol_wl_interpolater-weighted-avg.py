@@ -46,9 +46,9 @@ This script has been shared with the anticipation that it may be useful for othe
 for use in the Seventh phase of the Coupled model Intercomparison Project (CMIP7) and is subject to the copyright below.
 
 Please be aware that this code is shared on a good will basis and whilst is has been reviewed and tested we can not make any 
-guarantees of its scientific accuracy or applicability. Users should inspect and test the outcome of running it and reaching 
+guarantees of its scientific accuracy or applicability. Users should inspect and test the outcome of running it and reach 
 their own conclusion as to whether if it is the most appropriate interpolation method for their model, 
-and has produced a scientifically correct result.
+and has produced a scientifically correct / appropriate result.
 
 Copyright 2025 UK Met Office
 
@@ -128,7 +128,6 @@ def obtain_waveband_limits(wv_min_sw, wv_max_sw, wv_min_lw, wv_max_lw):
     excluded_band_lw = [0,     0,      4,    0,     6,    0,     0,     0,     0]
 
     return wv_mid_sw, wv_mid_lw, wv_mid_all, wv_bnds_sw, wv_bnds_lw, wv_bnds_all, nsw, nlw, exclusion_lw, excluded_band_lw 
-
 
 def interpolate_to_wavebands(ext_source, ssa_source, asy_source, 
                              wvs_source, 
@@ -438,7 +437,7 @@ if __name__ == '__main__':
     source_dir   = '/your_base_directory'
     
     # Data version. This could be used in the directory structure below source_dir 
-    # data_version = 'v20240903'
+    # data_version = 'v20250122'
     
     # Filenames minus the 3-charcter string at the start corresponding to the optical property name 
     #
