@@ -252,7 +252,7 @@ def plank_function(wv, Trep):
 
     return plank_irrad
 
-def read_cmip7_source_data(source_dir, filename_part, opt_prop_name, \
+def read_cmip7_source_data_v130(source_dir, filename_part, opt_prop_name, \
                                 expected_dimension_keys, skip_uv_wvs=0,   \
                                 first_month=0, last_month=1,              \
                                 verbose=False):
@@ -434,7 +434,7 @@ if __name__ == '__main__':
     # data and outputs
     ###############################################################################
     #
-    source_dir   = '/your_base_directory'
+    source_dir   = '/your_base_directory/v1.3.0'
     
     # Data version. This could be used in the directory structure below source_dir 
     # data_version = 'v20250122'
@@ -479,7 +479,7 @@ if __name__ == '__main__':
     # 3. Specify which months of the time series do you want to read 
     ###############################################################################
     #
-    # As of version 1.1.3 there were 3288 months in the file 
+    # As of version 1.1.3 and 1.3.0 there were 3288 months in the file 
     # covering the time period 1750 - 2023 (274 years * 12 = 3288).
     #
     # Therefore users may want to use the following setting for first_month and last_month:
@@ -506,7 +506,7 @@ if __name__ == '__main__':
     # to either a netcdf or numpy file (or both)? 
     #
     save_to_netcdf_file = True
-    save_to_numpy_file  = True
+    save_to_numpy_file  = False
     
     # Would you also like quick plots of the interpolated data plotted to screen?
     #
@@ -560,21 +560,21 @@ if __name__ == '__main__':
     # Get the optical properties from the source files
     #   
     source_dataset_ext, ext_source, wvs_source, time = \
-                read_cmip7_source_data(source_dir, filename_part, \
+                read_cmip7_source_data_v130(source_dir, filename_part, \
                                             'ext', expected_dimension_keys, \
                                             skip_uv_wvs=skip_uv_wvs, \
                                             first_month=first_month, last_month=last_month, \
                                             verbose=verbose)
 
     source_dataset_ssa, ssa_source, wvs_source, time = \
-                read_cmip7_source_data(source_dir, filename_part, \
+                read_cmip7_source_data_v130(source_dir, filename_part, \
                                             'ssa', expected_dimension_keys, \
                                             skip_uv_wvs=skip_uv_wvs, \
                                             first_month=first_month, last_month=last_month, \
                                             verbose=verbose)
 
     source_dataset_asy, asy_source, wvs_source, time = \
-                read_cmip7_source_data(source_dir, filename_part, \
+                read_cmip7_source_data_v130(source_dir, filename_part, \
                                             'asy', expected_dimension_keys, \
                                             skip_uv_wvs=skip_uv_wvs, \
                                             first_month=first_month, last_month=last_month, \
