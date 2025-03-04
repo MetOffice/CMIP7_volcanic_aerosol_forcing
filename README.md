@@ -10,13 +10,10 @@ another netcdf or numpy file with the data on the wavelengths intervals correspo
 
 The midpoint version is simple and fast to run. It performs a straight-forward linear interpolation to the midpoint
 wavelengths that are specified, corresponding to a radiation scheme spectral bands. The principal downside of this method is that it can lead
-to unrepresentative optical properties when applied to for wide wavebands that cover sections of the solar or terrestrial
+to unrepresentative optical properties when applied to wide wavebands that cover sections of the solar or terrestrial
 spectrum with strong gradients in optical properties and/or irradiance with wavelength.
 
-The weighted-avg version is a more complex version that will require greater CPU and memory but offers
-potentially more accurate results, particularly when applied to wide spectral wavebands where the optical
-properties and solar or terrestrial radiation have strong gradients in wavelength space. This method calculates weighted averages
-of the optical properties across the wavelength limits of a spectral band by splitting the band into smaller intervals and itegrating with appropriate weightings:
+The weighted-avg version is more complex and requires greater CPU and memory but offers potentially more accurate results, particularly when applied to wide spectral wavebands where the optical properties and solar or terrestrial radiation have strong gradients in wavelength space. This method calculates weighted averages of the optical properties across the wavelength limits of a spectral band by splitting the band into smaller intervals and itegrating with appropriate weightings:
 
   Extinction:                   Weighted by irradiance
   
